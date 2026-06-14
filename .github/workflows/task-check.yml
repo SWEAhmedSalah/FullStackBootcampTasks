@@ -19,13 +19,12 @@ jobs:
       - name: Compile Source
         run: |
           mkdir -p out
-
-          find task-01/src -name "*.java" > sources.txt
+          find task1/src -name "*.java" > sources.txt
           javac -cp "task1/libs/*" -d out @sources.txt
 
       - name: Compile Tests
         run: |
-          find task-01/tests -name "*.java" > tests.txt
+          find task1/tests -name "*.java" > tests.txt
           javac -cp "task1/libs/*:out" -d out @tests.txt
 
       - name: Run Tests

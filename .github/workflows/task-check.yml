@@ -19,18 +19,16 @@ jobs:
       - name: Compile Source
         run: |
           mkdir -p out
-          find task-01/src -name "*.java" > sources.txt
-          javac -cp "task-01/libs/*" -d out @sources.txt
-
+          find tasks/task-01/starter/src -name "*.java" > sources.txt
+          javac -cp "libs/*" -d out @sources.txt
+      - name: Copy XML config
+        run: |
+          cp tasks/task-01/starter/src/applicationContext.xml out/
       - name: Compile Tests
         run: |
-          find task-01/tests -name "*.java" > tests.txt
-          javac -cp "task-01/libs/*:out" -d out @tests.txt
+          find tasks/task-01/tests -name "*.java" > tests.txt
+          javac -cp "libs/*:out" -d out @tests.txt
 
       - name: Run Tests
         run: |
-          java -cp "task-01/libs/*:out" org.junit.runner.JUnitCore Task01Test
-      - name: Show Structure (DEBUG FULL)
-        run: |
-          pwd
-          ls -R
+          java -cp "libs/*:out" org.junit.runner.JUnitCore Task01Test

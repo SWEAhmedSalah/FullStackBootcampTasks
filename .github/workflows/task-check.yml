@@ -21,6 +21,9 @@ jobs:
           mkdir -p out
           find tasks/task-01/starter/src -name "*.java" > sources.txt
           javac -cp "libs/*" -d out @sources.txt
+      - name: Copy XML config
+        run: |
+          cp tasks/task-01/starter/src/applicationContext.xml out/
       - name: Compile Tests
         run: |
           find tasks/task-01/tests -name "*.java" > tests.txt

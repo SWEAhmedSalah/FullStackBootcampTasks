@@ -30,3 +30,7 @@ jobs:
       - name: Run Tests
         run: |
           java -cp "task-01/libs/*:out" org.junit.runner.JUnitCore Task01Test
+      - name: Show Structure (DEBUG FULL)
+        run: |
+          pwd
+          ls -R
